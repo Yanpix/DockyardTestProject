@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home - Dropbox";
+}
+
+@using (Ajax.BeginForm("DropBox", "Home", new AjaxOptions { UpdateTargetId = "files" }, new { @class = "form-inline" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-3">
+                @Html.TextBox("path", null, new { @class = "form-control", pattern = "([^<>])*", placeholder = "root" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Push" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div id="files"></div>

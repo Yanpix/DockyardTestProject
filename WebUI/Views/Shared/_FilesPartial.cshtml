@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BLL.Models.DropBoxFile>
+
+<div class="bs-example" data-example-id="condensed-table">
+   @if (Model.Any())
+   {
+       <table class="table table-condensed">
+           <thead>
+           <tr>
+               <th>Name</th>
+               <th>Path</th>
+               <th>Size</th>
+               <th>Modified</th>
+           </tr>
+           </thead>
+           <tbody>
+           @foreach (var file in Model)
+           {
+               <tr>
+                   <th><span style="padding-right: 5px;"><i class="@file.Icon"></i></span>@file.Name</th>
+                   <td>@file.Path</td>
+                   <td>@file.Size</td>
+                   <td>@file.ModifiedDate</td>
+               </tr>
+           }
+           </tbody>
+       </table>
+   }
+   else
+   {
+       <h4>Folder doesn't exist</h4>
+   }
+</div>
