@@ -16,7 +16,7 @@ namespace WebUI.Controllers
         
         public async Task<ActionResult> Index()
         {
-
+            //if in session exist dropbox acc.token, skip gettin ouath request url
             if (Session["dropbox"] != null)
               return RedirectToAction("DropBox");
 
