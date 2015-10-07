@@ -13,15 +13,21 @@ namespace WebUI.Controllers
             _dropboxService = dropboxService;
         }
 
-        public async Task Index()
+        public async Task<ActionResult> Index()
         {
+            if (Session["dropbox"] != null)
+              return RedirectToAction("DropBox");
+
             var uri = await _dropboxService.AuthorizeAsync();
             Response.Redirect(uri.ToString());
+
+            return View();
         }
 
         public async Task<ActionResult> SetCode(string code, string error = "")
         {
             await _dropboxService.SetCode(code, error);
+            Session["dropbox"] = code;
             return RedirectToAction("DropBox");
         }
 

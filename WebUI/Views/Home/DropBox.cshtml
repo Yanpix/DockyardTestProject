@@ -2,7 +2,7 @@
     ViewBag.Title = "Home - Dropbox";
 }
 
-@using (Ajax.BeginForm("DropBox", "Home", new AjaxOptions { UpdateTargetId = "files" }, new { @class = "form-inline" }))
+@using (Ajax.BeginForm("DropBox", null,  new AjaxOptions { UpdateTargetId = "files" }, new { @class = "form-inline" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
